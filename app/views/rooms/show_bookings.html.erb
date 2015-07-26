@@ -1,0 +1,31 @@
+<h3>Room#<%= @room.number %> Bookings:</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Contact Number</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Price</th>
+    <th>Actions</th>
+  </tr>
+  <% @line_items.each do |line_item| %>
+  	<% booking = line_item.booking %>
+  	<tr>
+	  <td><%= booking.name %></td>
+	  <td><%= booking.email %></td>
+	  <td><%= booking.contact_number %></td>
+	  <td><%= line_item.start_time %></td>
+	  <td><%= line_item.end_time %></td>
+	  <td><%= line_item.price %></td>
+	  <td>
+	    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+	      <p>
+		  <%= link_to 'Delete', [line_item.booking, line_item],
+	               method: :delete,
+	               data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></p>
+	    </div>
+	  </td>
+	</tr>
+  <% end %>
+</table>

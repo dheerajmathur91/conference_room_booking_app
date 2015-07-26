@@ -1,0 +1,27 @@
+<h1>Listing Holidays</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @holidays.each do |holiday| %>
+    <tr>
+      <td><%= holiday.name %></td>
+      <td><%= holiday.holiday_date %></td>
+      <td>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <%= link_to 'Show', holiday_path(holiday), :class => "btn btn-default" %>
+          <%= link_to 'Edit', edit_holiday_path(holiday), :class => "btn btn-default" %>
+          <%= link_to 'Delete', holiday_path(holiday),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create New Holiday', new_holiday_path, :class => "btn btn-primary" %>

@@ -1,0 +1,38 @@
+<%= form_for @holiday do |f| %>
+ 
+  <% if @holiday.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h4>
+        <%= pluralize(@holiday.errors.count, "error") %> prohibited
+        this holiday from being saved:
+      </h4>
+      <ul>
+        <% @holiday.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control', required: true %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :holiday_date %>
+    <div class='input-group date' id='holiday_date'>
+      <%= f.text_field :holiday_date, class: 'form-control', required: true %>
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+ 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+<script type="text/javascript">
+    $(function () {
+        $('#holiday_date').datetimepicker({format: 'DD/MM/YYYY LT'});
+    });
+</script>

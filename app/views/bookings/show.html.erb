@@ -1,0 +1,19 @@
+<h1><%= @booking.name %></h1>
+<p class="text-muted"><strong>Email: </strong><%= @booking.email %></p>
+<p class="text-muted"><strong>Contact Number: </strong><%= @booking.contact_number %></p>
+<p class="text-muted"><strong>Total: </strong>Rs. <%= @booking.total_amount.to_i %></p>
+<% if @booking.line_items.count > 0 %>
+	<h3>Room Bookings:</h3>
+	<table class="table table-striped">
+	  <tr>
+	    <th>Room Number</th>
+	    <th>Start Time</th>
+	    <th>End Time</th>
+	    <th>Price</th>
+	    <th>Actions</th>
+	  </tr>
+	  <%= render @booking.line_items %>
+	</table>
+<% end %>
+<h3>Add Room:</h3>
+<%= render 'line_items/form' %>

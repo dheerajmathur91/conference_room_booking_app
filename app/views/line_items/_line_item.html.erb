@@ -1,0 +1,14 @@
+<tr>
+  <td><%= line_item.room.number %></td>
+  <td><%= line_item.start_time %></td>
+  <td><%= line_item.end_time %></td>
+  <td><%= line_item.price %></td>
+  <td>
+    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+      <p>
+	  <%= link_to 'Delete', [line_item.booking, line_item],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></p>
+    </div>
+  </td>
+</tr>

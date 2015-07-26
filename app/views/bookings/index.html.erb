@@ -1,0 +1,31 @@
+<h1>Listing Bookings</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Contact Number</th>
+    <th>Total</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.name %></td>
+      <td><%= booking.email %></td>
+      <td><%= booking.contact_number %></td>
+      <td><%= booking.total_amount %></td>
+      <td>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <%= link_to 'Show', booking_path(booking), :class => "btn btn-default" %>
+          <%= link_to 'Edit', edit_booking_path(booking), :class => "btn btn-default" %>
+          <%= link_to 'Cancel', booking_path(booking),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create New Booking', new_booking_path, :class => "btn btn-primary" %>

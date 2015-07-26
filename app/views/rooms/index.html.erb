@@ -1,0 +1,32 @@
+<h1>Listing Rooms</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>Room Number</th>
+    <th>Capacity</th>
+    <th>Price Per Hour</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.number %></td>
+      <td><%= room.capacity %></td>
+      <td><%= room.price %></td>
+      <td>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <%= link_to 'Show Bookings', room_show_bookings_path(room), :class => "btn btn-info" %>
+        </div>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <%= link_to 'Show', room_path(room), :class => "btn btn-default" %>
+          <%= link_to 'Edit', edit_room_path(room), :class => "btn btn-default" %>
+          <%= link_to 'Delete', room_path(room),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create New Room', new_room_path, :class => "btn btn-primary" %>

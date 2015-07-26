@@ -1,0 +1,33 @@
+<%= form_for @room do |f| %>
+ 
+  <% if @room.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h4>
+        <%= pluralize(@room.errors.count, "error") %> prohibited
+        this room from being saved:
+      </h4>
+      <ul>
+        <% @room.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= f.label :number %><br>
+    <%= f.text_field :number, class: 'form-control', required: true %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :capacity %><br>
+    <%= f.text_field :capacity, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: 'form-control', required: true %>
+  </div>
+ 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
